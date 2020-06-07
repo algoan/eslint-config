@@ -4,7 +4,7 @@
   "description": "Algoan ESLint configurations",
   "main": "index.js",
   "scripts": {
-    "publish": "semantic-release"
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
