@@ -1,6 +1,6 @@
 {
   "name": "@algoan/eslint-config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Algoan ESLint configurations",
   "main": "index.js",
   "scripts": {
