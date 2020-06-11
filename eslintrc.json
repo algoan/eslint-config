@@ -45,7 +45,11 @@
         "@typescript-eslint/explicit-member-accessibility": [
             "error",
             {
-                "accessibility": "explicit"
+                "accessibility": "explicit",
+                "overrides": {
+                    "constructors": "off",
+                    "parameterProperties": "no-public"
+                }
             }
         ],
         "@typescript-eslint/indent": "off",
@@ -163,7 +167,6 @@
         "import/order": "error",
         "jsdoc/check-alignment": "error",
         "jsdoc/check-indentation": "error",
-        "jsdoc/newline-after-description": "error",
         "jsdoc/no-types": "error",
         "linebreak-style": "off",
         "max-classes-per-file": [
