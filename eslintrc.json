@@ -193,7 +193,13 @@
         "no-fallthrough": "error",
         "no-invalid-this": "error",
         "no-irregular-whitespace": "off",
-        "no-magic-numbers": "error",
+        "no-magic-numbers": [
+            "error", 
+            {
+                "ignoreArrayIndexes": false,
+                "ignore": [0, 1]
+            }
+        ],
         "no-multiple-empty-lines": "off",
         "no-new-wrappers": "error",
         "no-null/no-null": "error",
