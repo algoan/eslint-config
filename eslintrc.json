@@ -285,15 +285,12 @@
                         true,
                         "always"
                     ],
-                    "typedef": [
-                        true,
-                        "call-signature",
-                        "arrow-call-signature",
-                        "parameter",
-                        "arrow-parameter",
-                        "property-declaration",
-                        "variable-declaration",
-                        "member-variable-declaration"
+                    "typedef": [ 
+                        "error",
+                        {
+                            "variableDeclarationIgnoreFunction": true,
+                            "variableDeclaration": true
+                        }
                     ]
                 }
             }
