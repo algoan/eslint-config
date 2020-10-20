@@ -219,7 +219,7 @@
         "no-unsafe-finally": "error",
         "no-unused-labels": "error",
         "no-var": "error",
-        "no-void": "error",
+        "no-void": ["error", { "allowAsStatement": true }],
         "object-shorthand": "error",
         "one-var": [
             "error",
