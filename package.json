@@ -23,15 +23,15 @@
   },
   "homepage": "https://github.com/algoan/eslint-config#readme",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.0.2",
-    "@typescript-eslint/eslint-plugin-tslint": "^3.0.2",
-    "@typescript-eslint/parser": "^3.0.2",
-    "eslint": "^7.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsdoc": "^26.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^30.7.3",
     "eslint-plugin-no-null": "^1.0.2",
-    "eslint-plugin-prefer-arrow": "^1.2.1"
+    "eslint-plugin-prefer-arrow": "^1.2.2"
   },
   "peerDependencies": {
     "prettier": ">= 2",
@@ -39,12 +39,12 @@
     "typescript": ">= 3"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/config-conventional": "^11.0.0",
     "@semantic-release/git": "^9.0.0",
-    "commitlint": "^8.3.5",
-    "cz-conventional-changelog": "^3.2.0",
-    "husky": "^4.2.5",
-    "semantic-release": "^17.0.8"
+    "commitlint": "^11.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.0",
+    "semantic-release": "^17.2.1"
   },
   "config": {
     "commitizen": {
