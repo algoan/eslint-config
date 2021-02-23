@@ -3,8 +3,7 @@
         "es6": true
     },
     "extends": [
-        "prettier",
-        "prettier/@typescript-eslint"
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -195,7 +194,7 @@
         "no-invalid-this": "error",
         "no-irregular-whitespace": "off",
         "no-magic-numbers": [
-            "error", 
+            "error",
             {
                 "ignoreArrayIndexes": false,
                 "ignore": [0, 1]
@@ -287,7 +286,7 @@
                         true,
                         "always"
                     ],
-                    "typedef": [ 
+                    "typedef": [
                         "error",
                         {
                             "variableDeclarationIgnoreFunction": true,
