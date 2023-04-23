@@ -1,0 +1,27 @@
+name: Publish new release for @algoan/eslint-config
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish @algoan/eslint-config to NPM
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        ref: ${{ inputs.ref }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+    - run: npm i -g npm
+    - run: npm ci
+    - run: npm run semantic-release
+      name: Run Semantic Release
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT_SEMANTIC_RELEASE }}
