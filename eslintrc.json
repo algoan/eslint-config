@@ -281,7 +281,6 @@
                     "prefer-method-signature": true,
                     "prefer-switch": true,
                     "return-undefined": true,
-                    "strict-type-predicates": true,
                     "switch-final-break": [
                         true,
                         "always"
