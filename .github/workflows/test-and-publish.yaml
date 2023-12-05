@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: 0
         ref: ${{ inputs.ref }}
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18.x'
@@ -23,5 +23,8 @@ jobs:
     - run: npm run semantic-release
       name: Run Semantic Release
       env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.PUBLIC_REPO_GHA_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT_SEMANTIC_RELEASE }}
+        GITHUB_NPM_CONFIG_REGISTRY: https://npm.pkg.github.com/
+        GITHUB_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+        NPM_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
