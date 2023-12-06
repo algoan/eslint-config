@@ -26,7 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/eslint-plugin-tslint": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
-    "eslint": "^8.52.0",
+    "eslint": ">= 8",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsdoc": "^46.8.2",
@@ -39,6 +39,7 @@
     "typescript": ">= 3"
   },
   "devDependencies": {
+    "@amanda-mitchell/semantic-release-npm-multiple": "github:algoan/semantic-release-npm-multiple#fd763c631503cb88dd143ce72c5838aa1b19ace4",
     "@commitlint/config-conventional": "^18.0.0",
     "@semantic-release/git": "^10.0.1",
     "commitlint": "^18.0.0",
