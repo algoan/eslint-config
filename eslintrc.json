@@ -131,7 +131,7 @@
             "off"
         ],
         "camelcase": "error",
-        "class-methods-use-this": "error",
+        "class-methods-use-this": ["error", { "enforceForClassFields": false }],
         "comma-dangle": "off",
         "complexity": "error",
         "constructor-super": "error",
