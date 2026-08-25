@@ -9,17 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     name: Publish @algoan/eslint-config to NPM
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           ref: ${{ inputs.ref }}
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
-          node-version: "22.x"
+          node-version: "26.x"
           cache: "npm"
       - run: npm i -g npm
       - run: npm ci --legacy-peer-deps
+      - run: npm test
+        name: Check the shared configuration loads with ESLint
       - run: npm run semantic-release
         name: Run Semantic Release
         env:
