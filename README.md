@@ -4,7 +4,14 @@
 
 # Algoan ESLint config
 
-Algoan [ESLint](https://eslint.org) configuration shared for NodeJS projects written in [TypeScript](https://www.typescriptlang.org/) and using [prettier](https://prettier.io/). It is the ESLint equivalent for [@yelloan/tslint](https://github.com/yelloan/yelloan-tslint) rules.
+Algoan [ESLint](https://eslint.org) configuration shared for NodeJS projects written in [TypeScript](https://www.typescriptlang.org/) and using [prettier](https://prettier.io/).
+
+## Requirements
+
+- ESLint `>= 10` ([flat config](https://eslint.org/docs/latest/use/configure/configuration-files) only)
+- TypeScript `>= 4.8.4 < 6.1`
+- Prettier `>= 3`
+- Node.js `^20.19.0 || ^22.13.0 || >= 24`
 
 ## Installation
 
@@ -14,12 +21,37 @@ First, install this module running:
 npm install @algoan/eslint-config --save-dev
 ```
 
-Then, create a `.eslintrc.json` file:
+Then, create an `eslint.config.js` file:
 
-```json
-{
-  "extends": "@algoan/eslint-config"
-}
+```js
+const algoan = require('@algoan/eslint-config');
+
+module.exports = [...algoan];
+```
+
+Or with ESM (`eslint.config.mjs`):
+
+```js
+import algoan from '@algoan/eslint-config';
+
+export default [...algoan];
+```
+
+The configuration applies to `.ts`, `.tsx`, `.mts` and `.cts` files and expects a `tsconfig.json` at the root of your project (rules relying on type information use it). To point to another tsconfig, override `parserOptions`:
+
+```js
+const algoan = require('@algoan/eslint-config');
+
+module.exports = [
+  ...algoan,
+  {
+    languageOptions: {
+      parserOptions: {
+        project: 'tsconfig.eslint.json',
+      },
+    },
+  },
+];
 ```
 
 ## Usage
@@ -28,47 +60,13 @@ In your `package.json` file, add a script:
 
 ```json
 {
-  "lint": "eslint src/**/**.ts"
+  "lint": "eslint src"
 }
 ```
 
-## TSLint To ESLint Report
+## Migrating from v2
 
-Using the [tsling-to-eslint-config](https://github.com/typescript-eslint/tslint-to-eslint-config) script:
-
-```log
-8 ESLint rules behave differently from their TSLint counterparts:
-  * @typescript-eslint/no-unused-expressions:
-    - The TSLint optional config "allow-new" is the default ESLint behavior and will no longer be ignored.
-  * prefer-arrow/prefer-arrow-functions:
-    - ESLint does not support allowing named functions defined with the function keyword.
-  * camelcase:
-    - Leading undescores in variable names will now be ignored.
-  * no-underscore-dangle:
-    - Leading and trailing underscores (_) on identifiers will now be ignored.
-  * no-redeclare:
-    - ESLint does not support check-parameters.
-  * @typescript-eslint/no-unused-vars:
-    - Please read the following article as the rule behaviour may change on the short term: https://github.com/typescript-eslint/typescript-eslint/issues/1856
-  * @typescript-eslint/strict-boolean-expressions:
-    - String, number, enum, and mixed union types are now forbidden.
-  * class-methods-use-this:
-    - allow-public methods will no longer be ignored.
-
-15 rules are not known by tslint-to-eslint-config to have ESLint equivalents:
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "completed-docs".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "encoding".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "match-default-export-name".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-dynamic-delete".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-inferred-empty-object-type".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-mergeable-namespace".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-unnecessary-callback-wrapper".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-unsafe-any".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "prefer-conditional-expression".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "prefer-method-signature".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "prefer-switch".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "return-undefined".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "strict-type-predicates".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "switch-final-break".
-  * tslint-to-eslint-config does not know the ESLint equivalent for TSLint's "typedef".
-```
+- The configuration is now an ESLint [flat config](https://eslint.org/docs/latest/use/configure/configuration-files) array: replace your `.eslintrc.json` (`"extends": "@algoan/eslint-config"`) with an `eslint.config.js` file as shown above.
+- ESLint `>= 10` is required.
+- The [`import`](https://github.com/un-ts/eslint-plugin-import-x) rules are now provided by `eslint-plugin-import-x`, registered under the historical `import/` namespace: existing rule overrides such as `import/order` keep working.
+- Some rules have been removed, replaced or renamed: see the release notes for the detailed list.
