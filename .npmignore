@@ -1,3 +1,4 @@
-.circleci/
+.github/
 .releaserc.json
-tslint-to-eslint-config.log
+commitlint.config.js
+test/
