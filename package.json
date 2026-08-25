@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "eslint --config test/eslint.config.js test/valid.ts",
+    "prepare": "husky",
     "semantic-release": "semantic-release"
   },
   "repository": {
