@@ -1,5 +1,7 @@
 <p align="center">
-  <a href="http://algoan.com/" target="blank"><img src="https://media.licdn.com/dms/image/C4E0BAQH-hIlc5g9g7w/company-logo_200_200/0?e=2159024400&v=beta&t=j5y9KO1P22GsMx3vBNawrpvyvjD2iyBWGeVPUsRkn5s" width="320" alt="Algoan Logo" /></a>
+  <a href="http://algoan.com/" target="blank">
+    <img src="./assets/logo.svg" height="60" alt="Algoan Logo" />
+  </a>
 </p>
 
 # Algoan ESLint config
