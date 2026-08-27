@@ -209,9 +209,11 @@ module.exports = [
         'error',
         {
           require: {
+            ArrowFunctionExpression: true,
             ClassDeclaration: true,
             ClassExpression: true,
             FunctionDeclaration: true,
+            FunctionExpression: true,
             MethodDefinition: true,
           },
           contexts: ['TSInterfaceDeclaration', 'TSEnumDeclaration'],
