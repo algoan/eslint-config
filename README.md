@@ -10,10 +10,12 @@ Algoan [ESLint](https://eslint.org) configuration shared for NodeJS projects wri
 
 ## Requirements
 
-- ESLint `>= 10` ([flat config](https://eslint.org/docs/latest/use/configure/configuration-files) only)
-- TypeScript `>= 4.8.4 < 6.1`
-- Prettier `>= 3`
-- Node.js `^20.19.0 || ^22.13.0 || >= 24`
+- ESLint `>= 10` <!-- renovate: datasource=npm depName=eslint --> ([flat config](https://eslint.org/docs/latest/use/configure/configuration-files) only)
+- TypeScript `>=4.8.4`, up to `<6.1.0` <!-- renovate: datasource=npm depName=typescript -->
+- Prettier `>= 3` <!-- renovate: datasource=npm depName=prettier -->
+- Node.js `^20.19.0 || ^22.13.0 || >=24` <!-- renovate: datasource=node-version depName=node -->
+
+These are the `peerDependencies` and `engines` of [`package.json`](package.json): Renovate keeps both in sync.
 
 ## Installation
 
@@ -72,3 +74,7 @@ In your `package.json` file, add a script:
 - ESLint `>= 10` is required.
 - The [`import`](https://github.com/un-ts/eslint-plugin-import-x) rules are now provided by `eslint-plugin-import-x`, registered under the historical `import/` namespace: existing rule overrides such as `import/order` keep working.
 - Some rules have been removed, replaced or renamed: see the release notes for the detailed list.
+
+## Dependency updates
+
+Dependencies are updated by Renovate, and its security fixes are routed by CVSS: see [docs/RENOVATE.md](docs/RENOVATE.md).

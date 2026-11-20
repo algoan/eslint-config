@@ -1,6 +1,57 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":semanticCommits",
+    "security:minimumReleaseAgeNpm"
+  ],
+  "minimumReleaseAgePackageManagerSync": true,
+  "timezone": "Europe/Paris",
+  "labels": ["dependencies"],
+  "automerge": false,
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "description": "Security fixes are opened immediately, at the lowest fixing version, and routed by renovate-triage.yml (CVSS). The package is a published library: a fixed dependency keeps its range (bump of the floor), never an exact pin that would force one version on every consumer.",
+    "labels": ["dependencies", "security"],
+    "schedule": ["at any time"],
+    "prCreation": "immediate",
+    "rangeStrategy": "bump",
+    "vulnerabilityFixStrategy": "lowest",
+    "minimumReleaseAge": null,
+    "automerge": false
+  },
+  "lockFileMaintenance": {
+    "description": "package-lock.json only pins the dev and test tree (consumers resolve their own): a weekly re-lock keeps its transitive dependencies fresh.",
+    "enabled": true,
+    "schedule": ["before 6am on monday"]
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Keeps the Requirements of README.md in sync with the peerDependencies and engines of package.json: each line carries a hidden marker naming the dependency, so both files move in the same PR.",
+      "managerFilePatterns": ["/^README\\.md$/"],
+      "matchStrings": [
+        "`(?<currentValue>[^`]+)` <!-- renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: versioning=(?<versioning>\\S+))?(?: extractVersion=(?<extractVersion>\\S+))? -->"
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Batch routine updates once a week, instead of the daily Dependabot PRs.",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "schedule": ["before 6am on monday"]
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "schedule": ["before 6am on monday"]
+    },
+    {
+      "description": "algoan/renovate-security-actions runs the Renovate triage: its updates come in their own PR, for a human review.",
+      "matchPackageNames": ["algoan/renovate-security-actions"],
+      "groupName": "algoan renovate-security-actions",
+      "groupSlug": "algoan-renovate-security-actions"
+    }
   ]
 }
