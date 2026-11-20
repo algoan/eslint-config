@@ -2,3 +2,4 @@
 .releaserc.json
 commitlint.config.js
 test/
+docs/
